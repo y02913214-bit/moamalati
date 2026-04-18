@@ -7,7 +7,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<script>
+if (localStorage.getItem("loggedIn") === "true") {
+  window.location.href = "home.html";
+}
+</script>
 <div class="login-page">
   <div class="login-box">
 
