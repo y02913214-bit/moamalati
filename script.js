@@ -205,3 +205,21 @@ function login() {
   localStorage.setItem("loggedIn", "true");
   window.location.href = "home.html";
 }
+
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+  if (menu.style.display === "none") {
+    menu.style.display = "block";
+  } else {
+    menu.style.display = "none";
+  }
+}
+
+function logout() {
+  localStorage.removeItem("loggedIn");
+  window.location.href = "login.html";
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+}
