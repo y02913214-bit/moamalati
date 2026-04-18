@@ -2,162 +2,104 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>معاملتي</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معاملاتي</title>
 
 <style>
 body {
-  margin:0;
-  font-family:'Cairo', sans-serif;
-  overflow:hidden;
+    margin: 0;
+    font-family: Arial;
 }
 
-/* الخلفية */
+/* شاشة الترحيب */
 .bg {
-  height:100vh;
-  background: linear-gradient(-45deg, #1e3c72, #2a5298, #0f2027, #203a43);
-  background-size:400% 400%;
-  animation: gradientMove 10s ease infinite;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  color:white;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    z-index: 9999;
 }
 
-@keyframes gradientMove {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
-}
-
-/* هنا تحط الـ Media Query */
-@media (max-width: 768px) {
-
-  .logo {
-    width: 70px;
-    height: 70px;
-  }
-
-  .title {
-    font-size: 22px;
-  }
-
-  .subtitle {
-    font-size: 14px;
-    text-align: center;
-    padding: 0 10px;
-  }
-
-}
-/* اللوجو */
 .logo {
- width: 25vw;
-height: 25vw;
-max-width: 90px;
-max-height: 90px;
-  border-radius:50%;
-  background: rgba(255,255,255,0.15);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:40px;
-  backdrop-filter: blur(10px);
-  box-shadow:0 0 25px rgba(255,255,255,0.2);
-  animation: pop 1s ease;
+    font-size: 40px;
+    margin-bottom: 10px;
 }
 
-@keyframes pop {
-  from {transform:scale(0.5); opacity:0;}
-  to {transform:scale(1); opacity:1;}
-}
-
-/* النص */
 .title {
-  margin-top:15px;
-  font-size:30px;
-  opacity:0;
-  animation: fadeUp 1.5s ease forwards;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .subtitle {
-  font-size:16px;
-  opacity:0;
-  animation: fadeUp 2s ease forwards;
+    margin-top: 5px;
+    font-size: 16px;
+    opacity: 0.8;
 }
 
-@keyframes fadeUp {
-  from {transform:translateY(20px); opacity:0;}
-  to {transform:translateY(0); opacity:1;}
-}
-
-/* لودنغ */
+/* اللودر */
 .loader {
-  margin-top:40px;
-  display:flex;
-  gap:6px;
+    margin-top: 20px;
 }
 
 .loader span {
-  width:8px;
-  height:8px;
-  background:white;
-  border-radius:50%;
-  animation: bounce 1s infinite ease-in-out;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    margin: 3px;
+    animation: bounce 1.4s infinite;
 }
 
-.loader span:nth-child(2) { animation-delay:0.2s; }
-.loader span:nth-child(3) { animation-delay:0.4s; }
+.loader span:nth-child(2) { animation-delay: 0.2s; }
+.loader span:nth-child(3) { animation-delay: 0.4s; }
 
 @keyframes bounce {
-  0%,100% {transform:translateY(0);}
-  50% {transform:translateY(-10px);}
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* محتوى التطبيق */
+#mainApp {
+    display: none;
+    padding: 20px;
 }
 </style>
+
 </head>
 
 <body>
-<div id="welcomeScreen" style="
-position: fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background: linear-gradient(135deg, #1e3c72, #2a5298);
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:9999;
-">
 
-<h1>👋 مرحباً بك</h1>
-<p>تطبيق معاملاتي</p>
-
-<button onclick="enterApp()">دخول</button>
-
-</div>
+<!-- شاشة الترحيب -->
 <div id="welcomeScreen" class="bg">
+    <div class="logo">📱</div>
+    <div class="title">معاملاتي</div>
+    <div class="subtitle">معاملاتك خطوة بخطوة</div>
 
-  <div class="logo">📄</div>
-
-  <div class="title">معاملتي</div>
-  <div class="subtitle">معاملتك خطوة بخطوة</div>
-
-  <div class="loader">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </div>
-<script src="script.js"></script>
+
+<!-- التطبيق -->
+<div id="mainApp">
+    <h2>أهلاً بيك داخل التطبيق 👋</h2>
+    <p>هنا تبدي تضيف باقي الصفحات مالتك</p>
+</div>
 
 <script>
-setTimeout(function(){
-  document.getElementById("welcomeScreen").style.display = "none";
+setTimeout(function() {
+    document.getElementById("welcomeScreen").style.display = "none";
+    document.getElementById("mainApp").style.display = "block";
 }, 2000);
 </script>
+
+</body>
+</html>
