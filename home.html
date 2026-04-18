@@ -33,6 +33,14 @@ if (localStorage.getItem("loggedIn") !== "true") {
 
 </div>
 
+<div style="position:absolute; top:20px; left:20px;">
+  <button onclick="toggleMenu()">☰</button>
+  <div id="menu" style="display:none; background:white; padding:10px; border-radius:10px;">
+    <p onclick="logout()">تسجيل خروج</p>
+    <p onclick="changePassword()">تغيير كلمة المرور</p>
+    <p onclick="toggleDarkMode()">وضع ليلي / نهاري</p>
+  </div>
+</div>
 <div class="home-page">
 
   <!-- البحث -->
