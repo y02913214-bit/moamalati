@@ -201,3 +201,7 @@ window.onload = function () {
   loadServices();
   loadDetails();
 };
+function login() {
+  localStorage.setItem("loggedIn", "true");
+  window.location.href = "home.html";
+}
