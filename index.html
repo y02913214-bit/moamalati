@@ -33,10 +33,31 @@ body {
   100% {background-position:0% 50%;}
 }
 
+/* هنا تحط الـ Media Query */
+@media (max-width: 768px) {
+
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+}
 /* اللوجو */
 .logo {
-  width:90px;
-  height:90px;
+ width: 25vw;
+height: 25vw;
+max-width: 90px;
+max-height: 90px;
   border-radius:50%;
   background: rgba(255,255,255,0.15);
   display:flex;
@@ -113,7 +134,6 @@ body {
   </div>
 
 </div>
-
 <script src="script.js"></script>
 
 </body>
